@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 load(){
-    read -r line < /dev/stdin
+    read -r line
     len="${#line}"
 }
 
@@ -9,36 +9,46 @@ in_array(){
     local -n arr=$1
     local search=$2
     local item
+    # global bool holding if in array
+    in_arr=
 
     for item in "${arr[@]}"; do
-        [[ "$search" == "$item" ]] && return 0
+        [[ "$search" == "$item" ]] && in_arr=true && return 0
     done
 
-    return 1
+    in_arr=false
+    #return 1
 }
 
 col(){
-    local str change r c
+    local str change
     str=$1
     change=$2
+    # clear r and c first are global vars
+    r=
+    c=
 
     # extract the column r,c
     IFS=, read -r r c <<< "$str"
 
     ((c+=change))
-    echo "$r,$c"
+    #echo "$r,$c"
 }
 
 row(){
-    local str change r c
+    local str change
     str=$1
     change=$2
+    # clear r and c first are global vars
+    r=
+    c=
 
     # extract the column r,c
     IFS=, read -r r c <<< "$str"
 
     ((r+=change))
-    echo "$r,$c"
+
+    #echo "$r,$c"
 }
 
 
@@ -48,22 +58,30 @@ part1(){
     curr='0,0'
     count=1
     for ((i=0;i<len;i++));do
-        echo -ne  "\r$count/$len " >&2
+        #echo -ne  "\r$count/$len " >&2
         ((count++))
         char="${line:i:1}"
 
         case $char in
-            '^') 
-                curr=$(col "$curr" 1)
+            '^')
+                col "$curr" 1
+                printf -v curr "%d,%d" "$r" "$c"
+                #curr=$(col "$curr" 1)
             ;;
             'v') 
-                curr=$(col "$curr" -1)
+                col "$curr" -1
+                printf -v curr "%d,%d" "$r" "$c"
+                #curr=$(col "$curr" -1)
             ;;
             '>') 
-                curr=$(row "$curr" 1) 
+                row "$curr" 1
+                printf -v curr "%d,%d" "$r" "$c"
+                #curr=$(row "$curr" 1) 
             ;;
             '<') 
-                curr=$(row "$curr" -1)
+                row "$curr" -1
+                printf -v curr "%d,%d" "$r" "$c"
+                #curr=$(row "$curr" -1)
             ;;
             *)
                 echo "Invalid character $char"
@@ -71,7 +89,8 @@ part1(){
             ;;
         esac
         #echo "curr: $curr"
-        if ! in_array visited "$curr"; then
+        in_array visited "$curr"
+        if ! "$in_arr"; then
             visited+=("$curr")
             # printf "%s " "${visited[@]}"
             # echo
@@ -81,8 +100,8 @@ part1(){
     echo
     echo "Part 1: ${#visited[@]}"
 }
-
-# part1
+load
+part1
 
 part2(){
     #load
@@ -140,6 +159,6 @@ part2(){
 }
 #part2
 
-load
-part1
-part2
+# load
+# part1
+# part2

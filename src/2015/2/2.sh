@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+input="input.txt"
+if (( $# > 1 )) && [[ "$1" == '-t' ]]; then
+    input="test.txt"
+fi
+
 part1(){
     local total l w h s1 s2 s3 smallest i req
     total=0
@@ -17,7 +22,7 @@ part1(){
         done
         req=$(( (2*s1) + (2*s2) + (2*s3) + smallest ))
         ((total+=req))
-    done
+    done < "$input"
     echo "Part 1: $total"
 }
 part1
@@ -35,8 +40,9 @@ part2(){
         wrapper=$((2 * (s1 + s2)))
         req=$((bow + wrapper))
         ((total+=req))
-    done < /dev/stdin
+    done < "$input"
     echo "Part 2: $total"
 }
-# part2
+
+part2
 

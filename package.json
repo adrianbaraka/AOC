@@ -1,0 +1,25 @@
+{
+  "name": "aoc",
+  "version": "1.0.0",
+  "description": "- My solutions to the [advent of code](https://adventofcode.com/) problems. - Solutions are in go, bash and in some cases python.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianbaraka/AOC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/adrianbaraka/AOC/issues"
+  },
+  "homepage": "https://github.com/adrianbaraka/AOC#readme",
+  "devDependencies": {
+    "@types/node": "^25.0.6",
+    "typescript": "^5.9.3"
+  }
+}

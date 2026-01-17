@@ -1,4 +1,8 @@
 
 *.txt
-*.json
 *.sum
+*.out
+node_modules/
+package-lock.json
+*.work
+*.mod
