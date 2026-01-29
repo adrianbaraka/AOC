@@ -134,3 +134,41 @@ func (a *Two_Darray[T]) GetNeighbours4(c Coordinate) [] Coordinate {
 	//fmt.Println(neighbours)
 	return neighbours
 }
+
+// return a map of neighbours with keys the name
+func (a *Two_Darray[T]) GetNeighboursMap(c Coordinate) (map[ string ] Coordinate) {
+	neigbours := make(map [string] Coordinate)
+
+	positions := [...] string {"upLeft", "up", "upRight", "left", "right", "downLeft", "down", "downRight"}
+	n := [...] int { -1, 0, 1}
+	var i int
+	for _ ,rd := range n {
+		for _,cd := range n {
+			if rd == 0 && cd == 0 {
+				continue // element itself skip over it
+			}
+
+			r := c.Row + rd
+			c := c.Column + cd
+
+			if r >= 0 && r < a.NumRows() && c >= 0 && c < a.Columns {
+				ord := Coordinate{r,c}
+				neigbours[positions[i]] = ord
+			}
+			i ++
+		}
+	}
+	// add(-1, -1, "upLeft")
+	// add(-1, 0, "up")
+	// add(-1, 1, "upRight")
+
+	// add(0, -1, "left")
+	// add(0, 1, "right")
+
+	// add(1, -1, "downLeft")
+	// add(1, 0, "down")
+	// add(1, 1, "downRight")
+
+	return neigbours
+
+}

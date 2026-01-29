@@ -4,6 +4,9 @@
     // File Layout
     // "rootDir": "./src",
     // "outDir": "./dist",
+      "paths": {
+      "@utils/*": ["./utils/*"]
+    },
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
@@ -21,12 +24,12 @@
     "declarationMap": true,
 
     // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
+    //"noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
     // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
+     "noImplicitReturns": true,
+     "noImplicitOverride": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,

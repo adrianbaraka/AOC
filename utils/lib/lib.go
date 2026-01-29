@@ -2,9 +2,11 @@ package lib
 
 import (
 	"bufio"
+	"crypto/md5"
 	"fmt"
 	"io"
 	"os"
+	"strconv"
 )
 
 // library functions to be reused
@@ -52,6 +54,24 @@ func Is_palindrome(input string)(bool) {
 		}
 	}
 	return true
+}
+
+// return the md5hash of a string
+func Md5Hash(str string) string {
+	h := md5.New()
+	h.Write([]byte(str))
+	bs := h.Sum(nil)
+
+	return fmt.Sprintf("%x", bs)
+}
+
+// Convert a string to int Panic if not possible
+func ToInt(s string) int {
+	val, err := strconv.Atoi(s)
+	if err != nil {
+		panic(err)
+	}
+	return val
 }
 
 

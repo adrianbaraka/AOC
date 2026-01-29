@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-get_input(){
+get_input_(){
     local OPTIND opt
     local testing
     testing=false
@@ -19,6 +19,7 @@ get_input(){
 
     export input
 }
+
 
 get_neighbours() {
     local index=$1 columns=$2 len=$3

@@ -10,6 +10,8 @@ import (
 	"strings"
 )
 
+// TODO part 2 is slow
+
 const regex = `\(\d+x\d+\)`
 var	re = regexp.MustCompile(regex)
 
