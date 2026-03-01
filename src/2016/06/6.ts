@@ -1,6 +1,6 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env bun
 
-import { loadData } from '../../../utils/utils.ts'
+import { loadData } from '@utils/utils.ts'
 const data = loadData()
 
 if (!data) {

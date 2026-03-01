@@ -1,8 +1,5 @@
 
 *.txt
-*.sum
 *.out
 node_modules/
-package-lock.json
 *.work
-*.mod

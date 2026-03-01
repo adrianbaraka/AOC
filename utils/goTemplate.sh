@@ -38,9 +38,7 @@ main(){
 	(
 		cd "$dir" || exit 1
 		go mod init "aoc$day"
-		go work init
-		go work use "/home/abc/Github/repos/AOC/utils/lib"
-		go work use "$dir"
+		go mod tidy
 
 		# input files
 		touch input.txt
