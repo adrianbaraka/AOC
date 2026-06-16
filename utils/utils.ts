@@ -40,13 +40,14 @@ export function factorial(n: number): number {
 
 /**
  * Converts a string to a number.
- * Fatals and exits the process if the conversion fails.
+ * Throws an error if the conversion fails.
  */
 export function toInt(str: String): number {
 	const num = Number(str);
 	if (Number.isNaN(num)) {
-		console.error(`Cannot convert "${str}" to a number.`);
-		process.exit(1);
+		throw new Error(`Cannot convert "${str}" to a number.`);
+		//console.error(`Cannot convert "${str}" to a number.`);
+		//process.exit(1);
 	}
 	return num;
 }
@@ -93,4 +94,17 @@ export function assertExists<T>(
 	if (val == null) {
 		throw new Error(message);
 	}
+}
+
+/**
+ *
+ * @param str
+ * @returns An array of the string in bytes
+ */
+export function stringToBytes(str: string): number[] {
+	const res = [];
+	for (let i = 0; i < str.length; i++) {
+		res.push(str.charCodeAt(i));
+	}
+	return res;
 }
